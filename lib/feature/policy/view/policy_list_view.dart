@@ -1,6 +1,7 @@
 import 'package:crenno_huseyin_gur/core/constants/color_constants.dart';
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_cubit.dart';
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_state.dart';
+import 'package:crenno_huseyin_gur/product/helper/number_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,6 @@ class PolicyListView extends StatelessWidget {
           ],
         ),
         actions: [
-          /// Notification
           IconButton(
             icon: Icon(
               Icons.notifications_none_rounded,
@@ -43,19 +43,20 @@ class PolicyListView extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-
-          /// Profile Avatar
           Padding(
             padding: EdgeInsets.only(right: 16.w),
-            child: CircleAvatar(
-              radius: 18.r,
-              backgroundColor: ColorConstants.blueColor,
-              child: Text(
-                "HG",
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+            child: GestureDetector(
+              onTap: () {},
+              child: CircleAvatar(
+                radius: 18.r,
+                backgroundColor: ColorConstants.blueColor,
+                child: Text(
+                  "HG",
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -64,34 +65,15 @@ class PolicyListView extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          BlocConsumer<PolicyCubit, PolicyState>(
-            listenWhen: (previous, current) =>
-                previous.policyDetailState != current.policyDetailState,
-            listener: (context, state) {
-              if (state.policyDetailState == PolicyDetailStates.completed) {
-                context.push('/policy_detail',
-                    extra: {'policyCubit': context.read<PolicyCubit>()});
-              } else if (state.policyDetailState == PolicyDetailStates.error) {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Error: ${state.errorMessage}',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
+          BlocBuilder<PolicyCubit, PolicyState>(
+            buildWhen: (previous, current) =>
+                previous.policyState != current.policyState,
             builder: (context, state) {
               if (state.policyState == PolicyStates.loading) {
                 return Center(
                   child: CircularProgressIndicator(
                     color: ColorConstants.blueColor,
-                    strokeWidth: 2.w,
+                    strokeWidth: 2.4.w,
                   ),
                 );
               } else if (state.policyState == PolicyStates.completed) {
@@ -101,9 +83,12 @@ class PolicyListView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () async {
-                        await context
+                        context
                             .read<PolicyCubit>()
                             .getPolicyDetail(state.policyList[index].id!);
+                        context.push('/policy_detail', extra: {
+                          'policyCubit': context.read<PolicyCubit>()
+                        });
                       },
                       child: Container(
                         margin: EdgeInsets.only(bottom: 14.h),
@@ -162,7 +147,7 @@ class PolicyListView extends StatelessWidget {
 
                                   /// COVERAGE
                                   Text(
-                                    "Coverage: \$${state.policyList[index].coverageAmount}",
+                                    "Coverage: \$${numberFormat(state.policyList[index].coverageAmount.toString())}",
                                     style: TextStyle(
                                       fontSize: 13.sp,
                                       fontWeight: FontWeight.w500,
@@ -223,25 +208,6 @@ class PolicyListView extends StatelessWidget {
                 return Center(
                   child: Text('Error: ${state.errorMessage}'),
                 );
-              }
-            },
-          ),
-          BlocBuilder<PolicyCubit, PolicyState>(
-            builder: (context, state) {
-              if (state.policyDetailState == PolicyDetailStates.loading) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black26,
-                  ),
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: ColorConstants.blueColor,
-                      strokeWidth: 2.w,
-                    ),
-                  ),
-                );
-              } else {
-                return SizedBox();
               }
             },
           ),

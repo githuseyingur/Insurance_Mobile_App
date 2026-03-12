@@ -1,4 +1,5 @@
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_cubit.dart';
+import 'package:crenno_huseyin_gur/feature/policy/view/claim_submission_view.dart';
 import 'package:crenno_huseyin_gur/feature/policy/view/policy_detail_view.dart';
 import 'package:crenno_huseyin_gur/feature/policy/view/policy_list_view.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,12 @@ class AppRoute {
                     as PolicyCubit,
                 child: PolicyDetailView(),
               );
+            },
+          ),
+          GoRoute(
+            path: 'claim_submission',
+            builder: (BuildContext context, GoRouterState state) {
+              return ClaimSubmissionView();
             },
           ),
         ],
