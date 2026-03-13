@@ -24,7 +24,9 @@ class PolicyDetailView extends StatelessWidget {
         title: BlocBuilder<PolicyCubit, PolicyState>(
           builder: (context, state) {
             return Text(
-              state.policyDetail.type!,
+              state.policyDetailState == PolicyDetailStates.loading
+                  ? '...'
+                  : state.policyDetail.type!,
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
@@ -35,22 +37,26 @@ class PolicyDetailView extends StatelessWidget {
         ),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      floatingActionButton: SizedBox(
-        width: 180.w,
-        height: 50.h,
-        child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: ColorConstants.blueColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14.r),
+      floatingActionButton: BlocBuilder<PolicyCubit, PolicyState>(
+        builder: (context, state) {
+          return SizedBox(
+            width: 180.w,
+            height: 50.h,
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ColorConstants.blueColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.r),
+                ),
+              ),
+              onPressed: () {
+                context.push('/claim_submission', extra: state.policyDetail.id);
+              },
+              icon: const Icon(Icons.report_problem),
+              label: const Text("Submit Claim"),
             ),
-          ),
-          onPressed: () {
-            context.push('/claim_submission');
-          },
-          icon: const Icon(Icons.report_problem),
-          label: const Text("Submit Claim"),
-        ),
+          );
+        },
       ),
       body: BlocBuilder<PolicyCubit, PolicyState>(
         builder: (context, state) {
