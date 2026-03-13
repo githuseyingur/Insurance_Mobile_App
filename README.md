@@ -21,6 +21,8 @@ feature/
       ├─ model/
       ├─ view/
       └─ widget/
+  └─ claim/
+      ...
 ```
 
 This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
