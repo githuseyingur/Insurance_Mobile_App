@@ -33,8 +33,7 @@ This structure keeps related components together and separates **UI, business lo
 
 The application uses **Bloc with Cubit** for state management.
 
-Cubit was chosen because it provides a **simple and lightweight way to manage state** while keeping business logic separate from the UI. It also ensures predictable state updates and helps prevent unnecessary widget rebuilds.
-
+Cubit was chosen because it provides a **simple and lightweight way to manage state**, ensures a cleaner codebase and enhances project maintainability.
 ---
 
 ## Networking
