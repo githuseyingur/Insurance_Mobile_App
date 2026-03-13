@@ -1,16 +1,68 @@
-# crenno_huseyin_gur
+# Insurance Mobile App Demo
 
-A new Flutter project.
+This project is a **Minimum Viable Product (MVP)** of an insurance mobile application built with Flutter.  
+Users can view their active policies and submit a damage claim.
 
-## Getting Started
+## Architecture
+The project uses a **feature-based architecture** with the following main structure:
+lib/
+├─ core/
+├─ feature/
+└─ product/
+Features are organized by functionality. Each feature contains its own layers:
+feature/
+  └─ policy/
+      ├─ cubit/
+      ├─ service/
+      ├─ model/
+      ├─ view/
+      └─ widget/
+This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## State Management
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The application uses **Bloc with Cubit** for state management.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Cubit was chosen because it provides a **simple and lightweight way to manage state** while keeping business logic separate from the UI. It also ensures predictable state updates and helps prevent unnecessary widget rebuilds.
+
+---
+
+## Networking
+
+**Dio** is used for HTTP requests.
+
+A **Postman Mock API Server** is used to simulate backend endpoints. Policy data fetching and claim submission requests are sent to this mock server.
+
+---
+
+## Routing
+
+Navigation is implemented using **GoRouter**, which provides a clear and scalable routing structure.
+
+---
+
+## Form Validation & Error Handling
+
+The **Claim Submission** screen includes form validation to ensure required fields are filled.
+
+Error and loading states are handled using a status variable with the following values:
+
+- `initial`
+- `loading`
+- `completed`
+- `error`
+
+This allows the UI to react properly to asynchronous operations.
+
+---
+
+## Environment
+Flutter 3.27.4
+Dart 3.6.2
+
+---
+  
+
+
