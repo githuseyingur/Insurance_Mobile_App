@@ -5,11 +5,15 @@ Users can view their active policies and submit a damage claim.
 
 ## Architecture
 The project uses a **feature-based architecture** with the following main structure:
+```text
 lib/
 ├─ core/
 ├─ feature/
 └─ product/
+```
+
 Features are organized by functionality. Each feature contains its own layers:
+```text
 feature/
   └─ policy/
       ├─ cubit/
@@ -17,6 +21,8 @@ feature/
       ├─ model/
       ├─ view/
       └─ widget/
+```
+
 This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
 
 ---
