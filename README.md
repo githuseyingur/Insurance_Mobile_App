@@ -63,6 +63,12 @@ This allows the UI to react properly to asynchronous operations.
 
 ---
 
+## Security
+This project uses the `envied` package to securely manage sensitive data such as API base URLs and keys. <br>
+All environment variables are obfuscated during code generation to prevent potential leaks and ensure better security for the production build.
+
+---
+
 ## Environment
 Flutter 3.27.4
 Dart 3.6.2
