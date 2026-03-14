@@ -76,29 +76,29 @@ Dart 3.6.2
 
 ## Packages
 
-UI
+* UI
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.0
 
-STATE
+* STATE
   flutter_bloc: ^9.1.1
   equatable: ^2.0.8
 
-NAVIGATION
+* NAVIGATION
   go_router: ^16.1.0
 
-SERVICE
+* SERVICE
   dio: ^5.9.1 
 
-LOCAL
+* LOCAL
   shared_preferences: ^2.5.3
 
-SECURITY
+* SECURITY
   envied: ^1.2.1 
   
-INTERNET ACCESS
+* INTERNET ACCESS
   connectivity_plus: ^7.0.0
-  intl: ^0.20.2
+
 
 ---
 
