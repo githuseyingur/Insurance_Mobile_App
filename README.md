@@ -76,7 +76,7 @@ Dart 3.6.2
 
 ## Packages
 ```dart
- # UI
+  # UI
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.0
 
@@ -99,8 +99,3 @@ Dart 3.6.2
   # INTERNET ACCESS
   connectivity_plus: ^7.0.0
 ```
-
-
-
----
-
