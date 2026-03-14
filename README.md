@@ -69,7 +69,7 @@ Managed via `envied` with obfuscation for enhanced protection of base URL.
 ---
 
 ## Environment
-Flutter 3.27.4
+Flutter 3.27.4 <br>
 Dart 3.6.2
 
 ---
