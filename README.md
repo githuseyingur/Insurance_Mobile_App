@@ -90,9 +90,6 @@ Dart 3.6.2
   # SERVICE
   dio: ^5.9.1 
 
-  # LOCAL
-  shared_preferences: ^2.5.3
-
   # SECURITY
   envied: ^1.2.1 
 
