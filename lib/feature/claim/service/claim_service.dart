@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:crenno_huseyin_gur/feature/claim/service/i_claim_service.dart';
 import 'package:crenno_huseyin_gur/product/initial/config/app_environment.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class ClaimService extends IClaimService {
   final _dio = Dio();
+
   @override
   Future<dynamic> submitClaim(
     int policyId,
@@ -21,7 +21,7 @@ class ClaimService extends IClaimService {
         'description': description,
       });
       if (response.statusCode == HttpStatus.ok) {
-        return jsonDecode(response.data as String);
+        return response.data;
       } else {
         return null;
       }

@@ -1,7 +1,8 @@
 import 'package:crenno_huseyin_gur/core/constants/color_constants.dart';
 import 'package:crenno_huseyin_gur/feature/claim/cubit/claim_cubit.dart';
 import 'package:crenno_huseyin_gur/feature/claim/cubit/claim_state.dart';
-import 'package:crenno_huseyin_gur/product/components/snackbar.dart';
+import 'package:crenno_huseyin_gur/product/helper/snackbar.dart';
+import 'package:crenno_huseyin_gur/product/components/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,12 +18,52 @@ class ClaimSubmissionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorConstants.blueColor,
-        title: Text(
-          "Damage Claim",
-          style: TextStyle(fontSize: 18.sp),
+        toolbarHeight: 80.h,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        elevation: 0,
+        centerTitle: false, // Diğerleriyle tutarlı olması için sola hizaladık
+        titleSpacing: 0, // Geri butonu ile hizayı korumak için
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Damage Claim",
+              style: TextStyle(
+                fontSize: 22.sp,
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+                letterSpacing: -0.5,
+              ),
+            ),
+            Text(
+              "Report a new incident",
+              style: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black45,
+              ),
+            ),
+          ],
         ),
-        centerTitle: true,
+        actions: [
+          // Yardım butonu (Hasar kayıtlarında kullanıcı desteğe ihtiyaç duyabilir)
+          Padding(
+            padding: EdgeInsets.only(right: 12.w),
+            child: IconButton(
+              icon: Icon(
+                Icons.help_outline_rounded,
+                size: 24.sp,
+                color: ColorConstants.blueColor,
+              ),
+              onPressed: () {
+                // Destek veya Bilgi modalı açılabilir
+              },
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.w),
@@ -40,7 +81,7 @@ class ClaimSubmissionView extends StatelessWidget {
                     color: ColorConstants.blueColor.withAlpha(24),
                   ),
                   borderRadius: BorderRadius.circular(20.r),
-                  color: ColorConstants.blueColor.withAlpha(12),
+                  color: ColorConstants.blueColor.withAlpha(8),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +199,7 @@ class ClaimSubmissionView extends StatelessWidget {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(getSnackBar(
                         textColor: Colors.white,
-                        bgColor: ColorConstants.blueColor,
+                        bgColor: ColorConstants.greenColor,
                         text: "Claim Submitted Successfuly!",
                       ));
                     } else if (state.claimState == ClaimStates.error) {
@@ -171,7 +212,7 @@ class ClaimSubmissionView extends StatelessWidget {
                     }
                   },
                   builder: (context, state) {
-                    return ElevatedButton(
+                    return SubmitButton(
                       onPressed: state.claimState == ClaimStates.loading
                           ? null
                           : () {
@@ -192,27 +233,12 @@ class ClaimSubmissionView extends StatelessWidget {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(getSnackBar(
                                     textColor: Colors.white,
-                                    bgColor: ColorConstants.blueColor,
+                                    bgColor: ColorConstants.orangeColor,
                                     text: "Please select incident date",
                                   ));
                                 }
                               }
                             },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorConstants.blueColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14.r),
-                        ),
-                      ),
-                      child: state.claimState == ClaimStates.loading
-                          ? CircularProgressIndicator(
-                              strokeWidth: 2.4.w,
-                              color: Colors.white,
-                            )
-                          : Text(
-                              "Submit Claim",
-                              style: TextStyle(fontSize: 16.sp),
-                            ),
                     );
                   },
                 ),

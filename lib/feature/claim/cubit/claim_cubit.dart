@@ -20,9 +20,9 @@ class ClaimCubit extends Cubit<ClaimState> {
   Future<void> submitClaim(
       int policyId, String dateTime, String description) async {
     emit(state.copyWith(claimState: ClaimStates.loading));
-    var response = _claimService.submitClaim(policyId, dateTime, description);
+    var result = _claimService.submitClaim(policyId, dateTime, description);
 
-    if (response != null) {
+    if (result != null) {
       emit(
         state.copyWith(
           claimState: ClaimStates.completed,

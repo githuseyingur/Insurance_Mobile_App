@@ -1,9 +1,9 @@
 abstract class IClaimService {
-  // INTERFACE
   IClaimService();
+
   Future<dynamic> submitClaim(
     int policyId,
-    String dateTime,
+    String date,
     String description,
   );
 }
