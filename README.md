@@ -68,11 +68,6 @@ Managed via `envied` with obfuscation for enhanced protection of base URL.
 
 ---
 
-## Environment
-Flutter 3.27.4 <br>
-Dart 3.6.2
-
----
 
 ## Packages
 ```dart
@@ -96,3 +91,15 @@ Dart 3.6.2
   # INTERNET ACCESS
   connectivity_plus: ^7.0.0
 ```
+
+## Run the Project
+Flutter 3.27.4 <br>
+Dart 3.6.2
+
+```console
+git clone https://github.com/githuseyingur/Insurance_Mobile_App
+flutter pub get
+flutter run
+```
+---
+
