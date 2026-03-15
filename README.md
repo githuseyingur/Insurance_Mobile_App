@@ -27,12 +27,12 @@ feature/
 
 This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
 
----
+
 
 ## State Management
 <p>The application uses **Bloc with Cubit** for state management. Cubit was chosen because it provides a **simple and lightweight way to manage state**, ensures a cleaner codebase and enhances project maintainability.</p>
 
----
+
 
 ## Networking
 
@@ -40,13 +40,13 @@ This structure keeps related components together and separates **UI, business lo
 
 A **Postman Mock API Server** is used to simulate backend endpoints. Policy data fetching and claim submission requests are sent to this mock server.
 
----
+
 
 ## Routing
 
 Navigation is implemented using **GoRouter**, which provides a clear and scalable routing structure.
 
----
+
 
 ## Form Validation & Error Handling
 
@@ -61,12 +61,12 @@ Error and loading states are handled using a status variable with the following 
 
 This allows the UI to react properly to asynchronous operations.
 
----
+
 
 ## Security
 Managed via `envied` with obfuscation for enhanced protection of base URL.
 
----
+
 
 
 ## Packages
@@ -101,5 +101,5 @@ git clone https://github.com/githuseyingur/Insurance_Mobile_App
 flutter pub get
 flutter run
 ```
----
+
 
