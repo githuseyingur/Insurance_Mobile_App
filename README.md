@@ -4,7 +4,7 @@ This project is a **Minimum Viable Product (MVP)** of an insurance mobile applic
 Users can view their active policies and submit a damage claim.
 
 ## Architecture
-The project uses a `**feature-based architecture**` with the following main structure:
+The project uses a `feature-based architecture` with the following main structure:
 ```text
 lib/
 ├─ core/
