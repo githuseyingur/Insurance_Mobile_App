@@ -53,13 +53,13 @@ class InfoCardWidget extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             value,
-            maxLines: 1, // Taşmaları önlemek için
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.black,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
-              letterSpacing: -0.2, // Sayısal değerlerde daha premium durur
+              letterSpacing: -0.2,
             ),
           ),
         ],

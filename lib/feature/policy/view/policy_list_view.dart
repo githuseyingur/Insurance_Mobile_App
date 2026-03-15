@@ -81,8 +81,7 @@ class PolicyListView extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Colors
-                        .transparent, // Arka planı yuvarlak köşeler için şeffaf yapıyoruz
+                    backgroundColor: Colors.transparent,
                     builder: (context) => Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 24.w, vertical: 20.h),
@@ -94,10 +93,8 @@ class PolicyListView extends StatelessWidget {
                         ),
                       ),
                       child: Column(
-                        mainAxisSize:
-                            MainAxisSize.min, // İçerik kadar yer kaplaması için
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          /// Tutamaç (Handle)
                           Container(
                             width: 40.w,
                             height: 4.h,
@@ -107,8 +104,6 @@ class PolicyListView extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 24.h),
-
-                          /// Profil Bilgileri
                           Row(
                             children: [
                               CircleAvatar(
@@ -147,7 +142,6 @@ class PolicyListView extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 32.h),
-
                           ProfileMenuTile(
                             icon: Icons.person_outline_rounded,
                             title: "Account Settings",
@@ -163,9 +157,7 @@ class PolicyListView extends StatelessWidget {
                             title: "Privacy & Security",
                             onTap: () {},
                           ),
-
                           Divider(height: 32.h, color: Colors.grey.shade100),
-
                           ProfileMenuTile(
                             icon: Icons.logout_rounded,
                             title: "Sign Out",
@@ -267,7 +259,6 @@ class PolicyListView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  /// TYPE
                                   Text(
                                     state.policyList[index].type!,
                                     style: TextStyle(
@@ -275,10 +266,7 @@ class PolicyListView extends StatelessWidget {
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-
                                   SizedBox(height: 4.h),
-
-                                  /// POLICY NUMBER
                                   Text(
                                     "Policy No: ${state.policyList[index].policyNumber}",
                                     style: TextStyle(
@@ -286,10 +274,7 @@ class PolicyListView extends StatelessWidget {
                                       color: Colors.grey[600],
                                     ),
                                   ),
-
                                   SizedBox(height: 8.h),
-
-                                  /// COVERAGE
                                   Text(
                                     "Coverage: \$${numberFormat(state.policyList[index].coverageAmount.toString())}",
                                     style: TextStyle(
@@ -297,10 +282,7 @@ class PolicyListView extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-
                                   SizedBox(height: 4.h),
-
-                                  /// DATE RANGE
                                   Text(
                                     "${DateFormat('dd MMM yyyy').format(DateTime.parse(state.policyList[index].startDate!))} - "
                                     "${DateFormat('dd MMM yyyy').format(DateTime.parse(state.policyList[index].endDate!))}",
@@ -315,7 +297,6 @@ class PolicyListView extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                /// STATUS
                                 Container(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 10.w, vertical: 4.h),
@@ -332,9 +313,7 @@ class PolicyListView extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                                 SizedBox(height: 18.h),
-
                                 Icon(
                                   Icons.arrow_forward_ios,
                                   size: 16.sp,

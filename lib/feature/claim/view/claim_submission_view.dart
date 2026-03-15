@@ -22,8 +22,8 @@ class ClaimSubmissionView extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         elevation: 0,
-        centerTitle: false, // Diğerleriyle tutarlı olması için sola hizaladık
-        titleSpacing: 0, // Geri butonu ile hizayı korumak için
+        centerTitle: false,
+        titleSpacing: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,6 @@ class ClaimSubmissionView extends StatelessWidget {
           ],
         ),
         actions: [
-          // Yardım butonu (Hasar kayıtlarında kullanıcı desteğe ihtiyaç duyabilir)
           Padding(
             padding: EdgeInsets.only(right: 12.w),
             child: IconButton(
@@ -58,9 +57,7 @@ class ClaimSubmissionView extends StatelessWidget {
                 size: 24.sp,
                 color: ColorConstants.blueColor,
               ),
-              onPressed: () {
-                // Destek veya Bilgi modalı açılabilir
-              },
+              onPressed: () {},
             ),
           ),
         ],
@@ -71,7 +68,6 @@ class ClaimSubmissionView extends StatelessWidget {
           key: _formKey,
           child: Column(
             children: [
-              /// HEADER CARD
               Container(
                 width: 1.sw,
                 padding: EdgeInsets.all(20.w),
@@ -101,9 +97,7 @@ class ClaimSubmissionView extends StatelessWidget {
                   ],
                 ),
               ),
-
               SizedBox(height: 30.h),
-
               GestureDetector(
                 onTap: () async {
                   final picked = await showDatePicker(
@@ -148,9 +142,7 @@ class ClaimSubmissionView extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 24.h),
-
               TextFormField(
                 controller: context.read<ClaimCubit>().descriptionController,
                 maxLines: 5,
@@ -184,10 +176,7 @@ class ClaimSubmissionView extends StatelessWidget {
                   return null;
                 },
               ),
-
               SizedBox(height: 32.h),
-
-              /// SUBMIT BUTTON
               SizedBox(
                 width: 1.sw,
                 height: 52.h,

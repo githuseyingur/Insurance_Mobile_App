@@ -72,7 +72,6 @@ class PolicyDetailView extends StatelessWidget {
       ),
       bottomNavigationBar: BlocBuilder<PolicyCubit, PolicyState>(
         builder: (context, state) {
-          // Veri yüklenirken veya hata durumunda butonu göstermemek isteyebilirsin
           if (state.policyDetailState != PolicyDetailStates.completed) {
             return const SizedBox.shrink();
           }
@@ -103,29 +102,24 @@ class PolicyDetailView extends StatelessWidget {
             return Center(
               child: CircularProgressIndicator(
                 color: ColorConstants.blueColor,
-                strokeWidth: 3.w, // Biraz daha belirgin
+                strokeWidth: 3.w,
               ),
             );
           } else if (state.policyDetailState == PolicyDetailStates.completed) {
             return SingleChildScrollView(
-              physics:
-                  const BouncingScrollPhysics(), // Daha premium bir kaydırma hissi
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// HEADER CARD (Daha derinlikli ve soft bir görünüm)
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(24.w), // Biraz daha geniş padding
+                    padding: EdgeInsets.all(24.w),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xff4A7DFF),
-                          Color(0xff335CCF)
-                        ], // Daha doygun bir gradyan
+                        colors: [Color(0xff4A7DFF), Color(0xff335CCF)],
                       ),
                       borderRadius: BorderRadius.circular(24.r),
                       boxShadow: [
@@ -176,7 +170,7 @@ class PolicyDetailView extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24.sp,
-                            fontWeight: FontWeight.w800, // Daha kalın başlık
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
                         SizedBox(height: 8.h),
@@ -197,10 +191,7 @@ class PolicyDetailView extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   SizedBox(height: 24.h),
-
-                  /// COVERAGE INFO (Yan yana kartlar)
                   Row(
                     children: [
                       Expanded(
@@ -222,9 +213,7 @@ class PolicyDetailView extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   SizedBox(height: 28.h),
-
                   Padding(
                     padding: EdgeInsets.only(bottom: 10.h),
                     child: Text(
@@ -253,9 +242,7 @@ class PolicyDetailView extends StatelessWidget {
                       value: state.policyDetail.riskLevel!,
                     ),
                   ]),
-
                   SizedBox(height: 28.h),
-
                   Padding(
                     padding: EdgeInsets.only(bottom: 10.h),
                     child: Text(
@@ -292,9 +279,7 @@ class PolicyDetailView extends StatelessWidget {
                             ))
                         .toList(),
                   ),
-
                   SizedBox(height: 28.h),
-
                   Padding(
                     padding: EdgeInsets.only(bottom: 10.h),
                     child: Text(
@@ -315,7 +300,6 @@ class PolicyDetailView extends StatelessWidget {
                       value: state.policyDetail.metadata!.agentCode!,
                     ),
                   ]),
-
                   SizedBox(height: 100.h),
                 ],
               ),

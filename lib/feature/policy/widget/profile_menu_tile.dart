@@ -12,7 +12,7 @@ class ProfileMenuTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.onTap,
-    this.color = Colors.black87, // Varsayılan renk
+    this.color = Colors.black87,
   });
 
   @override

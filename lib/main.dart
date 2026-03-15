@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(410, 864), // tasarım ekran çözünürlüğü
+      designSize: const Size(410, 864),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               overlayShape: SliderComponentShape.noOverlay,
             ),
             useMaterial3: false,
-            textTheme: GoogleFonts.robotoTextTheme(), // font family = roboto
+            textTheme: GoogleFonts.robotoTextTheme(),
           ),
           builder: (context, child) {
             return child!;

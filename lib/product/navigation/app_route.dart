@@ -14,7 +14,6 @@ class AppRoute {
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
-            // Provider
             create: (context) => PolicyCubit(),
             child: const PolicyListView(),
           );
@@ -23,8 +22,6 @@ class AppRoute {
           GoRoute(
             path: 'policy_detail',
             builder: (BuildContext context, GoRouterState state) {
-              // Provider value
-
               return BlocProvider.value(
                 value: (state.extra as Map<String, dynamic>)['policyCubit']
                     as PolicyCubit,

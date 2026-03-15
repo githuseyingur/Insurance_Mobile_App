@@ -23,8 +23,7 @@ class SubmitButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        icon:
-            Icon(Icons.add_alert_rounded, size: 22.sp), // Daha modern bir ikon
+        icon: Icon(Icons.add_alert_rounded, size: 22.sp),
         label: Text(
           "Submit Claim",
           style: TextStyle(
