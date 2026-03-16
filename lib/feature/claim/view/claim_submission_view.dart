@@ -17,6 +17,7 @@ class ClaimSubmissionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConstants.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80.h,
         backgroundColor: Colors.white,
@@ -74,10 +75,10 @@ class ClaimSubmissionView extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1,
-                    color: ColorConstants.blueColor.withAlpha(24),
+                    color: ColorConstants.blueColor.withAlpha(28),
                   ),
                   borderRadius: BorderRadius.circular(20.r),
-                  color: ColorConstants.blueColor.withAlpha(8),
+                  color: ColorConstants.blueColor.withAlpha(20),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,6 +100,7 @@ class ClaimSubmissionView extends StatelessWidget {
               ),
               SizedBox(height: 30.h),
               GestureDetector(
+                // picks incident date
                 onTap: () async {
                   final picked = await showDatePicker(
                     context: context,
@@ -118,7 +120,7 @@ class ClaimSubmissionView extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14.r),
-                    border: Border.all(color: Colors.grey.shade300),
+                    border: Border.all(color: Colors.grey.shade400),
                   ),
                   child: Row(
                     children: [
@@ -162,11 +164,16 @@ class ClaimSubmissionView extends StatelessWidget {
                       color: ColorConstants.blueColor,
                     ),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(14.r),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 2.w,
                       color: ColorConstants.blueColor,
                     ),
+                    borderRadius: BorderRadius.circular(14.r),
                   ),
                 ),
                 validator: (value) {
@@ -202,6 +209,7 @@ class ClaimSubmissionView extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return SubmitButton(
+                      // triggers claim submission
                       onPressed: state.claimState == ClaimStates.loading
                           ? null
                           : () {

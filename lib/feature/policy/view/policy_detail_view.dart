@@ -19,7 +19,7 @@ class PolicyDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FB),
+      backgroundColor: ColorConstants.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80.h,
         elevation: 0,
@@ -29,6 +29,7 @@ class PolicyDetailView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
         title: BlocBuilder<PolicyCubit, PolicyState>(
+          // title text based on state
           builder: (context, state) {
             final isLoading =
                 state.policyDetailState == PolicyDetailStates.loading;
@@ -97,6 +98,7 @@ class PolicyDetailView extends StatelessWidget {
               ],
             ),
             child: SubmitButton(
+              // navigates to claim submission
               onPressed: () {
                 context.push('/claim_submission', extra: state.policyDetail.id);
               },
@@ -105,6 +107,7 @@ class PolicyDetailView extends StatelessWidget {
         },
       ),
       body: BlocBuilder<PolicyCubit, PolicyState>(
+        // displays policy details
         builder: (context, state) {
           if (state.policyDetailState == PolicyDetailStates.loading) {
             return Center(

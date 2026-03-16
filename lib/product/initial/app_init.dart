@@ -17,6 +17,6 @@ class ApplicationInitialize {
         SystemUiMode.immersiveSticky, // status bar kapalı
         overlays: [SystemUiOverlay.bottom]);
 
-    AppEnvironment.setup(config: DevEnv()); // Envied
+    AppEnvironment.setup(config: DevEnv()); // Envied setup
   }
 }

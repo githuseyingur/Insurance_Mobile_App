@@ -10,13 +10,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
-class PolicyListView extends StatelessWidget {
-  const PolicyListView({super.key});
+class PolicyView extends StatelessWidget {
+  const PolicyView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FB),
+      backgroundColor: ColorConstants.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80.h,
         backgroundColor: Colors.white,
@@ -347,6 +347,7 @@ class PolicyListView extends StatelessWidget {
   }
 
   IconData _getPolicyIcon(String type) {
+    // returns icon for policy type
     switch (type) {
       case "Vehicle":
         return Icons.directions_car;

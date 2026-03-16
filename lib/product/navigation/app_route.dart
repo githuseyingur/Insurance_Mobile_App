@@ -2,7 +2,7 @@ import 'package:crenno_huseyin_gur/feature/claim/cubit/claim_cubit.dart';
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_cubit.dart';
 import 'package:crenno_huseyin_gur/feature/claim/view/claim_submission_view.dart';
 import 'package:crenno_huseyin_gur/feature/policy/view/policy_detail_view.dart';
-import 'package:crenno_huseyin_gur/feature/policy/view/policy_list_view.dart';
+import 'package:crenno_huseyin_gur/feature/policy/view/policy_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +15,7 @@ class AppRoute {
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
             create: (context) => PolicyCubit(),
-            child: const PolicyListView(),
+            child: const PolicyView(),
           );
         },
         routes: <RouteBase>[
