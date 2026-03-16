@@ -88,8 +88,6 @@ Managed via `envied` with obfuscation for enhanced protection of base URL.
   # SECURITY
   envied: ^1.2.1 
 
-  # INTERNET ACCESS
-  connectivity_plus: ^7.0.0
 ```
 
 ## Run the Project
