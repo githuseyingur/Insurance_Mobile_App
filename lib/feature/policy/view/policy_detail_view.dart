@@ -31,13 +31,18 @@ class PolicyDetailView extends StatelessWidget {
           builder: (context, state) {
             final isLoading =
                 state.policyDetailState == PolicyDetailStates.loading;
+            final isError = state.policyDetailState == PolicyDetailStates.error;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  isLoading ? 'Loading...' : (state.policyDetail.type ?? ""),
+                  isLoading
+                      ? 'Loading...'
+                      : isError
+                          ? 'Error!'
+                          : (state.policyDetail.type ?? ""),
                   style: TextStyle(
                     fontSize: isLoading ? 16.sp : 22.sp,
                     fontWeight: isLoading ? FontWeight.w400 : FontWeight.w900,
@@ -47,7 +52,9 @@ class PolicyDetailView extends StatelessWidget {
                 ),
                 if (!isLoading)
                   Text(
-                    "Policy Details & Coverage",
+                    isError
+                        ? "Please check your connection!"
+                        : "Policy Details & Coverage",
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
@@ -305,7 +312,43 @@ class PolicyDetailView extends StatelessWidget {
               ),
             );
           } else if (state.policyDetailState == PolicyDetailStates.error) {
-            return Center(child: Text('Error: ${state.errorMessage}'));
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.error_outline, size: 60, color: Colors.red[400]),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Something went wrong!',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      state.errorMessage,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConstants.blueColor),
+                      onPressed: () {
+                        context
+                            .read<PolicyCubit>()
+                            .getPolicyDetail(state.policyDetail.id!);
+                      },
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Try Again'),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
           return const SizedBox();
         },
