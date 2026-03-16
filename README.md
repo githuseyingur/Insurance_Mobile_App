@@ -27,6 +27,14 @@ feature/
 
 This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
 
+The product folder contains public components, utility functions, models, and constants used in the app.
+```text
+products/
+  └─ components/
+  └─ helper/
+  └─ navigation/
+      ...
+```
 
 
 ## State Management
