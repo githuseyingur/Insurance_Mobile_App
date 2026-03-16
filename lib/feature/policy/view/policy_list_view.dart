@@ -222,6 +222,9 @@ class PolicyListView extends StatelessWidget {
                       onTap: () async {
                         context
                             .read<PolicyCubit>()
+                            .setPolicyId(state.policyList[index].id!);
+                        context
+                            .read<PolicyCubit>()
                             .getPolicyDetail(state.policyList[index].id!);
                         context.push('/policy_detail', extra: {
                           'policyCubit': context.read<PolicyCubit>()

@@ -55,4 +55,8 @@ class PolicyCubit extends Cubit<PolicyState> {
           errorMessage: "Could not load policy detail. Please try again."));
     }
   }
+
+  void setPolicyId(int policyId) {
+    emit(state.copyWith(selectedPolicyId: policyId));
+  }
 }

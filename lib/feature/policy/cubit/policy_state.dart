@@ -9,6 +9,7 @@ class PolicyState extends Equatable {
     required this.errorMessage,
     required this.policyList,
     required this.policyDetail,
+    required this.selectedPolicyId,
   });
   factory PolicyState.initial() {
     return PolicyState(
@@ -17,6 +18,7 @@ class PolicyState extends Equatable {
       errorMessage: '',
       policyList: [],
       policyDetail: PolicyDetailModel(),
+      selectedPolicyId: 0,
     );
   }
 
@@ -26,6 +28,7 @@ class PolicyState extends Equatable {
   final String errorMessage;
   final List<PolicyModel> policyList;
   final PolicyDetailModel policyDetail;
+  final int selectedPolicyId;
 
   @override
   List<Object?> get props => [
@@ -34,6 +37,7 @@ class PolicyState extends Equatable {
         errorMessage,
         policyList,
         policyDetail,
+        selectedPolicyId,
       ];
 
   PolicyState copyWith({
@@ -42,6 +46,7 @@ class PolicyState extends Equatable {
     String? errorMessage,
     List<PolicyModel>? policyList,
     PolicyDetailModel? policyDetail,
+    int? selectedPolicyId,
   }) {
     return PolicyState(
       policyState: policyState ?? this.policyState,
@@ -49,6 +54,7 @@ class PolicyState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       policyList: policyList ?? this.policyList,
       policyDetail: policyDetail ?? this.policyDetail,
+      selectedPolicyId: selectedPolicyId ?? this.selectedPolicyId,
     );
   }
 }

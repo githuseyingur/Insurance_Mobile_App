@@ -318,7 +318,7 @@ class PolicyDetailView extends StatelessWidget {
               onPressed: () {
                 context
                     .read<PolicyCubit>()
-                    .getPolicyDetail(state.policyDetail.id!);
+                    .getPolicyDetail(state.selectedPolicyId);
               },
             );
           }
