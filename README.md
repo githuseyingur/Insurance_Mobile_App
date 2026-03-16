@@ -12,7 +12,7 @@ lib/
 └─ product/
 ```
 
-Features are organized by functionality. Each feature contains its own layers:
+Features are organized by functionality. Each `feature` contains its own layers:
 ```text
 feature/
   └─ policy/
@@ -27,9 +27,9 @@ feature/
 
 This structure keeps related components together and separates **UI, business logic, and data handling**, making the project easier to maintain and extend.
 
-The product folder contains public components, utility functions, models, and constants used in the app.
+The `product` folder contains public components, utility functions, models, and constants used in the app.
 ```text
-products/
+product/
   └─ components/
   └─ helper/
   └─ navigation/
