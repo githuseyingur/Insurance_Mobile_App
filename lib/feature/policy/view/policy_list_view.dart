@@ -2,6 +2,7 @@ import 'package:crenno_huseyin_gur/core/constants/color_constants.dart';
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_cubit.dart';
 import 'package:crenno_huseyin_gur/feature/policy/cubit/policy_state.dart';
 import 'package:crenno_huseyin_gur/feature/policy/widget/profile_menu_tile.dart';
+import 'package:crenno_huseyin_gur/product/components/error_info_widget.dart';
 import 'package:crenno_huseyin_gur/product/helper/number_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -328,41 +329,11 @@ class PolicyListView extends StatelessWidget {
                   },
                 );
               } else {
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.error_outline,
-                            size: 60, color: Colors.red[400]),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Something went wrong!',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          state.errorMessage,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                        const SizedBox(height: 24),
-                        ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorConstants.blueColor),
-                          onPressed: () {
-                            context.read<PolicyCubit>().getPolicyList();
-                          },
-                          icon: const Icon(Icons.refresh),
-                          label: const Text('Try Again'),
-                        ),
-                      ],
-                    ),
-                  ),
+                return ErrorInfoWidget(
+                  errorMessage: state.errorMessage,
+                  onPressed: () {
+                    context.read<PolicyCubit>().getPolicyList();
+                  },
                 );
               }
             },
